@@ -7,7 +7,7 @@ function PlayerBar(props) {
   useEffect(() => {
     setTracks(props.currentSong.tracks);
     setSong(props.currentSong.song);
-  }, [props]);
+  }, [props.currentSong]);
   console.log("the song is this");
   return (
     <>
@@ -17,7 +17,7 @@ function PlayerBar(props) {
             <div
               className='player-cover-img'
               style={{
-                backgroundImage: `url(${props.currentSong.cover || tracks[0].album.cover || "http://placecorgi.com/260/180"})`,
+                backgroundImage: `url(${tracks[song] && tracks[song].album ? tracks[song].album.cover : props.currentSong.cover})`,
               }}
             ></div>
             <div className='song-title-info'>

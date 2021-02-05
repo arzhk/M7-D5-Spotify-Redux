@@ -7,7 +7,7 @@ const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = (dispatch) => ({
   saveCurrentSong: (currentSong) => dispatch({ type: "SET_CURRENT_SONG", payload: currentSong }),
-  addToFavorite: (id) => dispatch({ type: "ADD_SONGS_LIKED", payload: id }),
+  addToFavorite: (song) => dispatch({ type: "ADD_SONGS_LIKED", payload: song }),
   removeFromFavorite: (id) => dispatch({ type: "REMOVE_SONGS_LIKED", payload: id }),
 });
 function AlbumPage(props) {
@@ -68,7 +68,7 @@ function AlbumPage(props) {
             </button>{" "}
             <p id='num-of-songs'> {albumData && albumData.nb_tracks} Songs </p>
             <div className='mini-buttons mt-4'>
-              <button className='btn btn-heart' onClick={() => (props.user.liked.some((liked) => liked.id === albumData.id) ? props.removeFromFavorite(albumData) : props.addToFavorite(albumData))}>
+              <button className='btn btn-heart' onClick={() => (props.user.liked.some((liked) => liked.id === albumData.id) ? props.removeFromFavorite(albumData.id) : props.addToFavorite(albumData))}>
                 <i className={props.user.liked.some((liked) => liked.id === albumData.id) ? "fa fa-heart" : "far fa-heart"}></i>
               </button>
               <button className='btn btn-more'>...</button>
