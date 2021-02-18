@@ -9,6 +9,9 @@ function PlayerBar(props) {
     setSong(props.currentSong.song);
   }, [props]);
   console.log("the song is this");
+  if (props.history.location.pathname.includes("login") || props.history.location.pathname.includes("signUp")) {
+    return <div></div>;
+  }
   return (
     <>
       <section id='player'>
